@@ -1,17 +1,84 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(FlutterBotsApp());
+void main() {
+  runApp(MyApp());
+}
 
-class FlutterBotsApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      key: Key('FlutterBotsApp'),
-      title: 'FlutterBots Demo',
+      title: 'FlutterBots',
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: ComponentListScreen(),
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('FlutterBots'),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            ListTile(
+              title: Text('Home'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('About Us'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Settings'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Component Library'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ComponentListScreen()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Welcome to FlutterBots!',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Flutter is an open-source UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase. It is highly popular for rapid development and its rich set of pre-designed widgets.',
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Dart is the programming language used in Flutter. It offers strong support for modern app development with features like asynchronous programming, strong type checking, and libraries for common tasks.',
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -19,127 +86,69 @@ class FlutterBotsApp extends StatelessWidget {
 class ComponentListScreen extends StatelessWidget {
   final List<Component> components = [
     Component(
-        key: Key('TextComponent'),
         name: 'Text',
         description: 'A run of styled text.',
-        exampleWidget: Text(
-          'Hello, World!',
-          style: TextStyle(fontSize: 24.0),
-          key: Key('TextExample'),
-        )),
+        exampleCode: Text('Hello, World!', style: TextStyle(fontSize: 24.0))),
     Component(
-        key: Key('ColumnComponent'),
         name: 'Column',
         description: 'Layout a list of child widgets vertically.',
-        exampleWidget: Column(
-          children: [Text('Item 1'), Text('Item 2'), Text('Item 3')],
-          key: Key('ColumnExample'),
-        )),
+        exampleCode:
+            Column(children: [Text('Item 1'), Text('Item 2'), Text('Item 3')])),
     Component(
-        key: Key('RowComponent'),
         name: 'Row',
         description: 'Layout a list of child widgets horizontally.',
-        exampleWidget: Row(
-          children: [Text('Item 1'), Text('Item 2'), Text('Item 3')],
-          key: Key('RowExample'),
-        )),
+        exampleCode:
+            Row(children: [Text('Item 1'), Text('Item 2'), Text('Item 3')])),
     Component(
-        key: Key('ContainerComponent'),
         name: 'Container',
         description:
             'A convenience widget that combines common painting, positioning, and sizing widgets.',
-        exampleWidget: Container(
-          width: 100,
-          height: 100,
-          color: Colors.blue,
-          key: Key('ContainerExample'),
-        )),
+        exampleCode: Container(width: 100, height: 100, color: Colors.blue)),
     Component(
-        key: Key('ImageComponent'),
         name: 'Image',
         description: 'A widget that displays an image.',
-        exampleWidget: Image.network(
-          'https://example.com/image.jpg',
-          key: Key('ImageExample'),
-        )),
+        exampleCode: Image.network('https://example.com/image.jpg')),
     Component(
-        key: Key('IconComponent'),
         name: 'Icon',
         description: 'A Material Design icon.',
-        exampleWidget: Icon(
-          Icons.star,
-          color: Colors.yellow,
-          key: Key('IconExample'),
-        )),
+        exampleCode: Icon(Icons.star, color: Colors.yellow)),
     Component(
-        key: Key('ElevatedButtonComponent'),
         name: 'ElevatedButton',
         description: 'A Material Design raised button.',
-        exampleWidget: ElevatedButton(
-          onPressed: () {},
-          child: Text('Click Me'),
-          key: Key('ElevatedButtonExample'),
-        )),
+        exampleCode: ElevatedButton(onPressed: () {}, child: Text('Click Me'))),
     Component(
-        key: Key('TextButtonComponent'),
         name: 'TextButton',
         description: 'A Material Design flat button.',
-        exampleWidget: TextButton(
-          onPressed: () {},
-          child: Text('Click Me'),
-          key: Key('TextButtonExample'),
-        )),
+        exampleCode: TextButton(onPressed: () {}, child: Text('Click Me'))),
     Component(
-        key: Key('ScaffoldComponent'),
         name: 'Scaffold',
         description: 'Basic visual layout structure.',
-        exampleWidget: Scaffold(
-          appBar: AppBar(
-            title: Text('Scaffold Example'),
-          ),
-          body: Text('Hello World'),
-          key: Key('ScaffoldExample'),
-        )),
+        exampleCode: Text('Scaffold Example')),
     Component(
-        key: Key('AppBarComponent'),
         name: 'AppBar',
         description: 'A Material Design app bar.',
-        exampleWidget: AppBar(
-          title: Text('App Bar Example'),
-          key: Key('AppBarExample'),
-        )),
+        exampleCode: Text('App Bar Example')),
     Component(
-        key: Key('FlutterLogoComponent'),
         name: 'FlutterLogo',
         description: 'The Flutter logo, in widget form.',
-        exampleWidget: FlutterLogo(
-          size: 100,
-          key: Key('FlutterLogoExample'),
-        )),
+        exampleCode: FlutterLogo(size: 100)),
     Component(
-        key: Key('PlaceholderComponent'),
         name: 'Placeholder',
         description:
             'A widget that draws a box that represents where other widgets will one day be added.',
-        exampleWidget: Placeholder(
-          fallbackHeight: 100,
-          fallbackWidth: 100,
-          key: Key('PlaceholderExample'),
-        ))
+        exampleCode: Placeholder(fallbackHeight: 100, fallbackWidth: 100)),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: Key('ComponentListScreen'),
       appBar: AppBar(
-        title: Text('FlutterBots Component Demo'),
+        title: Text('Component Library'),
       ),
       body: ListView.builder(
         itemCount: components.length,
         itemBuilder: (context, index) {
           return ListTile(
-            key: Key('ComponentTile-\${index}'),
             title: Text(components[index].name),
             subtitle: Text(components[index].description),
             onTap: () {
@@ -166,7 +175,6 @@ class ComponentDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: Key('ComponentDetailScreen'),
       appBar: AppBar(
         title: Text(component.name),
       ),
@@ -184,7 +192,7 @@ class ComponentDetailScreen extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 20),
-            component.exampleWidget,
+            component.exampleCode,
           ],
         ),
       ),
@@ -193,14 +201,13 @@ class ComponentDetailScreen extends StatelessWidget {
 }
 
 class Component {
-  final Key key;
   final String name;
   final String description;
-  final Widget exampleWidget;
+  final Widget exampleCode;
 
   Component(
-      {required this.key,
+      {Key? key,
       required this.name,
       required this.description,
-      required this.exampleWidget});
+      required this.exampleCode});
 }
