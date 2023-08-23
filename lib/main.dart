@@ -35,6 +35,17 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             ListTile(
+              title: const Text('Component Library'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ComponentListScreen()),
+                );
+              },
+            ),
+            ListTile(
               title: const Text('About Us'),
               onTap: () {
                 Navigator.push(context,
@@ -47,17 +58,6 @@ class HomeScreen extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
-            ListTile(
-              title: const Text('Component Library'),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ComponentListScreen()),
-                );
-              },
-            ),
           ],
         ),
       ),
@@ -67,8 +67,8 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset('assets/logo_red.png',
-                width: 150, height: 150, fit: BoxFit.contain),
+            Image.asset('assets/less_coding.png',
+                width: 200, height: 200, fit: BoxFit.contain),
             const Text(
               'Welcome to FlutterBots!',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -111,9 +111,11 @@ class ComponentListScreen extends StatelessWidget {
             'A convenience widget that combines common painting, positioning, and sizing widgets.',
         exampleCode: Container(width: 100, height: 100, color: Colors.blue)),
     Component(
-        name: 'Image',
-        description: 'A widget that displays an image.',
-        exampleCode: Image.network('https://example.com/image.jpg')),
+      name: 'Image',
+      description: 'A widget that displays an image.',
+      exampleCode: Image.asset('assets/less_coding.png',
+          width: 150, height: 150, fit: BoxFit.contain),
+    ),
     Component(
         name: 'Icon',
         description: 'A Material Design icon.',
