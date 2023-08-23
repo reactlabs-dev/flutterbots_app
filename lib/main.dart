@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens/about_us.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,31 +23,32 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('FlutterBots'),
+        title: const Text('FlutterBots'),
       ),
       drawer: Drawer(
         child: ListView(
           children: [
             ListTile(
-              title: Text('Home'),
+              title: const Text('Home'),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              title: Text('About Us'),
+              title: const Text('About Us'),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AboutUsPage()));
+              },
+            ),
+            ListTile(
+              title: const Text('Settings'),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              title: Text('Settings'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Component Library'),
+              title: const Text('Component Library'),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -62,18 +64,21 @@ class HomeScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
+            Image.asset('assets/logo_red.png',
+                width: 150, height: 150, fit: BoxFit.contain),
+            const Text(
               'Welcome to FlutterBots!',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 16),
-            Text(
+            const SizedBox(height: 16),
+            const Text(
               'Flutter is an open-source UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase. It is highly popular for rapid development and its rich set of pre-designed widgets.',
             ),
-            SizedBox(height: 16),
-            Text(
+            const SizedBox(height: 16),
+            const Text(
               'Dart is the programming language used in Flutter. It offers strong support for modern app development with features like asynchronous programming, strong type checking, and libraries for common tasks.',
             ),
           ],
@@ -88,7 +93,8 @@ class ComponentListScreen extends StatelessWidget {
     Component(
         name: 'Text',
         description: 'A run of styled text.',
-        exampleCode: Text('Hello, World!', style: TextStyle(fontSize: 24.0))),
+        exampleCode:
+            const Text('Hello, World!', style: TextStyle(fontSize: 24.0))),
     Component(
         name: 'Column',
         description: 'Layout a list of child widgets vertically.',
@@ -111,7 +117,7 @@ class ComponentListScreen extends StatelessWidget {
     Component(
         name: 'Icon',
         description: 'A Material Design icon.',
-        exampleCode: Icon(Icons.star, color: Colors.yellow)),
+        exampleCode: const Icon(Icons.star, color: Colors.yellow)),
     Component(
         name: 'ElevatedButton',
         description: 'A Material Design raised button.',
@@ -123,27 +129,28 @@ class ComponentListScreen extends StatelessWidget {
     Component(
         name: 'Scaffold',
         description: 'Basic visual layout structure.',
-        exampleCode: Text('Scaffold Example')),
+        exampleCode: const Text('Scaffold Example')),
     Component(
         name: 'AppBar',
         description: 'A Material Design app bar.',
-        exampleCode: Text('App Bar Example')),
+        exampleCode: const Text('App Bar Example')),
     Component(
         name: 'FlutterLogo',
         description: 'The Flutter logo, in widget form.',
-        exampleCode: FlutterLogo(size: 100)),
+        exampleCode: const FlutterLogo(size: 100)),
     Component(
         name: 'Placeholder',
         description:
             'A widget that draws a box that represents where other widgets will one day be added.',
-        exampleCode: Placeholder(fallbackHeight: 100, fallbackWidth: 100)),
+        exampleCode:
+            const Placeholder(fallbackHeight: 100, fallbackWidth: 100)),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Component Library'),
+        title: const Text('Component Library'),
       ),
       body: ListView.builder(
         itemCount: components.length,
@@ -170,7 +177,8 @@ class ComponentListScreen extends StatelessWidget {
 class ComponentDetailScreen extends StatelessWidget {
   final Component component;
 
-  ComponentDetailScreen({Key? key, required this.component}) : super(key: key);
+  const ComponentDetailScreen({Key? key, required this.component})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -184,14 +192,14 @@ class ComponentDetailScreen extends StatelessWidget {
           children: <Widget>[
             Text(
               component.name,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               component.description,
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             component.exampleCode,
           ],
         ),
