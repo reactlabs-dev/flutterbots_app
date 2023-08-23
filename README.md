@@ -2,6 +2,9 @@
 
 FlutterBots is a demonstration app showcasing various Flutter components. It has been designed and developed by Matt Vegas at React Labs, Inc. to exhibit proficiency in Flutter development. By navigating through the app, users can explore various components Flutter has to offer, accompanied by a description and a live example.
 
+![Simulator Screenshot - iPhone 14 Pro - 2023-08-22 at 22 54 25](https://github.com/reactlabs-dev/flutterbots_app/assets/69309035/c259e213-d5b3-49c9-a04d-816851c61a3d)
+
+
 ## Tech Stack
 
 - **Flutter**: The core framework used for building the app.
